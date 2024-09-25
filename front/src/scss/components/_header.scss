@@ -1,0 +1,62 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    max-height: 56px;
+    background-color: $block;
+    border-bottom: 1px solid $splitter;
+    .header__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 15px;
+
+        .header__left {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+
+            .header__logo {
+                display: flex;
+                align-items: center;
+
+                .logo__text {
+                    display: flex;
+                    flex-direction: column;
+
+                    font-family: "Protest Guerrilla", system-ui;
+                    font-weight: 400;
+                    line-height: 1;
+
+                    &-name {
+                        font-size: 20px;
+                    }
+
+                    &-slogan {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .header__account{
+            display: flex;
+            gap: 15px;
+
+            &-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            &-img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
+    }
+}

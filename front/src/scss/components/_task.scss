@@ -1,0 +1,19 @@
+.task__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .menu__checkbox {
+        display: flex;
+        align-items: center;
+
+        input {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
