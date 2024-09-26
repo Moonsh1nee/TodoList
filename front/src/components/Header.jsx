@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import {logout, selectIsAuth} from "../redux/slices/auth.js";
 
 export const Header = () => {
-    const isAuth = false;
+    const isAuth = useSelector(selectIsAuth);
+    const dispatch = useDispatch();
+    const onClickLogout = () => {
+        if (window.confirm('Are you sure you want to logout?')) {
+            dispatch(logout())
+            window.localStorage.removeItem('token');
+        }
+    };
 
     return (
         <header className='header'>
@@ -31,7 +40,7 @@ export const Header = () => {
                                 <img src="https://i.pinimg.com/736x/bd/d9/aa/bdd9aaee8c129b1d0a7180512c6f7ae5.jpg" alt="account logo" className="header__account-img" />
                                 <span className="header__account-name">Vlad Akimov</span>
                             </div>
-                            <button type="submit" className='btn btn--logout'>
+                            <button onClick={onClickLogout} type="submit" className='btn btn--logout'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className='icon icon--logout'>
                                     <path d="M216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-29.7 21.15-50.85Q186.3-816 216-816h264v72H216v528h264v72H216Zm432-168-51-51 81-81H384v-72h294l-81-81 51-51 168 168-168 168Z"/>
                                 </svg>

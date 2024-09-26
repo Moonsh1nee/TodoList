@@ -1,6 +1,13 @@
-import { useForm } from "react-hook-form";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchRegister, selectIsAuth} from "../../redux/slices/auth";
+import {useForm} from "react-hook-form";
+import {Navigate} from "react-router-dom";
 
 export const Registration = () => {
+
+    const dispatch = useDispatch();
+    const isAuth = useSelector(selectIsAuth);
+
     const {
         register,
         handleSubmit,
@@ -15,12 +22,26 @@ export const Registration = () => {
         mode: 'onChange',
     });
 
+    const onSubmit = async (values) => {
+        const data = await dispatch(fetchRegister(values))
+        if (!data.payload) {
+            return alert('Error register!')
+        }
+        if ('token' in data.payload) {
+            window.localStorage.setItem('token', data.payload.token)
+        }
+    }
+
+    if (isAuth) {
+        return <Navigate to='/'/>
+    }
+
     return (
         <main className="main__form">
             <div className="form">
                 <h2 className="form__title">Create account</h2>
                  <img src="https://i.pinimg.com/736x/bd/d9/aa/bdd9aaee8c129b1d0a7180512c6f7ae5.jpg" alt="account logo" className="form__img" />
-                 <form onSubmit={handleSubmit()}>
+                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form__item">
                         <label htmlFor="nickName">Nickname</label>
                         <input

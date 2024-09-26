@@ -29,43 +29,44 @@ const authSlice = createSlice({
       state.data = null;
     },
   },
-  extraReducers: {
-    [fetchAuth.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder
+    .addCase(fetchAuth.pending, (state) => {
       state.data = null;
       state.status = 'loading';
-    },
-    [fetchAuth.fulfilled]: (state, action) => {
+    })
+    .addCase(fetchAuth.fulfilled, (state, action) => {
       state.data = action.payload;
       state.status = 'loaded';
-    },
-    [fetchAuth.rejected]: (state) => {
+    })
+    .addCase(fetchAuth.rejected, (state) => {
       state.data = null;
       state.status = 'error';
-    },
-    [fetchAuthMe.pending]: (state) => {
+    })
+    .addCase(fetchAuthMe.pending, (state) => {
       state.data = null;
       state.status = 'loading';
-    },
-    [fetchAuthMe.fulfilled]: (state, action) => {
+    })
+    .addCase(fetchAuthMe.fulfilled, (state, action) => {
       state.data = action.payload;
       state.status = 'loaded';
-    },
-    [fetchAuthMe.rejected]: (state) => {
+    })
+    .addCase(fetchAuthMe.rejected, (state) => {
       state.data = null;
       state.status = 'error';
-    },
-    [fetchRegister.pending]: (state) => {
+    })
+    .addCase(fetchRegister.pending, (state) => {
       state.data = null;
       state.status = 'loading';
-    },
-    [fetchRegister.fulfilled]: (state, action) => {
+    })
+    .addCase(fetchRegister.fulfilled, (state, action) => {
       state.data = action.payload;
       state.status = 'loaded';
-    },
-    [fetchRegister.rejected]: (state) => {
+    })
+    .addCase(fetchRegister.rejected, (state) => {
       state.data = null;
       state.status = 'error';
-    },
+    })
   },
 });
 

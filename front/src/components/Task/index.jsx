@@ -1,10 +1,16 @@
-export const Task = () => {
+export const Task = ({
+    _id,
+    nameTask,
+    dateTask,
+    checkedTask
+}) => {
     const check = true;
+
     return (
         <div className="task__wrapper">
             <div className="menu__checkbox">
                 <input type="checkbox" name="#" />
-                {check ? (
+                {checkedTask ? (
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--task-done">
                         <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
                     </svg>
@@ -14,7 +20,7 @@ export const Task = () => {
                     </svg>
                 )}
             </div>
-            <span>Task 1</span>
+            <span>{nameTask}</span>
         </div>
     )
 }

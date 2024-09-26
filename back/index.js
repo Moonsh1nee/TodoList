@@ -26,8 +26,8 @@ app.post('/auth/login', loginValidation, handleValidationErrors, UserController.
 app.post('/auth/register', registerValidation, handleValidationErrors, UserController.register);
 app.get('/auth/me', checkAuth, UserController.getMe);
 
-app.get('/lists', ListController.getAllLists);
-app.get('/lists/:id', ListController.getOneList);
+app.get('/lists', checkAuth, ListController.getAllLists);
+app.get('/lists/:id', checkAuth, ListController.getOneList);
 app.post(
   '/lists',
   checkAuth,
@@ -51,8 +51,8 @@ app.post(
   handleValidationErrors,
   TaskController.createTask,
 );
-app.get('/tasks', TaskController.getAll);
-app.get('/tasks/:id', TaskController.getOne);
+app.get('/tasks', checkAuth, TaskController.getAll);
+app.get('/tasks/:id', checkAuth, TaskController.getOne);
 app.delete('/tasks/:id', checkAuth, TaskController.remove);
 app.patch(
   '/tasks/:id',

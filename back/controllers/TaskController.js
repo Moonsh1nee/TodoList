@@ -19,7 +19,7 @@ export const createTask = async (req, res) => {
     } else {
       res.status(500).json({
         message: 'Error',
-      })
+      });
     }
   } catch (err) {
     console.error(err);
@@ -31,7 +31,7 @@ export const createTask = async (req, res) => {
 
 export const getAll = async (req, res) => {
   try {
-    const tasks = await TaskModel.find().populate('user').exec();
+    const tasks = await TaskModel.find({ user: req.userId });
 
     res.json(tasks);
   } catch (err) {
@@ -46,7 +46,7 @@ export const getOne = async (req, res) => {
   try {
     const taskId = req.params.id;
 
-    const task = await TaskModel.findById(taskId);
+    const task = await TaskModel.find({ user: req.userId, _id: taskId });
     res.json(task);
   } catch (err) {
     console.error(err);

@@ -1,5 +1,10 @@
+import { useSelector } from "react-redux";
+
 export const SideMenu = () => {
-    const check = false;
+    const lists = useSelector(state => state.lists)
+    const isListsLoading = lists.status === 'loading';
+
+    const check = true;
 
     return (
         <aside className="side-menu">
@@ -38,51 +43,30 @@ export const SideMenu = () => {
                 </div>
 
                 <ul>
-                    <li>
-                        <div className="menu__checkbox">
-                            <input type="checkbox" name="#" />
-                            {check ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
-                                </svg>
-                            ): (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
-                                </svg> 
-                            )}
-                        </div>
-                        <span>First list</span>
-                    </li>
-                    <li>
-                        <div className="menu__checkbox">
-                            <input type="checkbox" name="#" />
-                            {check ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
-                                </svg>
-                            ): (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
-                                </svg> 
-                            )}
-                        </div>
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, architecto.</span>
-                    </li>
-                    <li>
-                        <div className="menu__checkbox">
-                            <input type="checkbox" name="#" />
-                            {check ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
-                                </svg>
-                            ): (
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
-                                    <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
-                                </svg> 
-                            )}
-                        </div>
-                        <span>Third list</span>
-                    </li>
+                    {
+                        isListsLoading
+                        ? ''
+                        : (
+                            lists.items.map((obj, index) => (
+                                <li key={index}>
+                                    <div className="menu__checkbox">
+                                        <input type="checkbox" name="#" />
+                                        {check ? (
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
+                                                <path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+                                            </svg>
+                                        ): (
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--checked">
+                                                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z"/>
+                                            </svg> 
+                                        )}
+                                    </div>
+                                    <span>{obj.nameList}</span>
+                                </li>
+                            ))
+                        )
+                    }
+                    
                     <li>
                         <button type="submit" className="btn btn--create-list">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--add-list">
