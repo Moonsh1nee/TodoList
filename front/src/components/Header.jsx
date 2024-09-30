@@ -5,6 +5,8 @@ import {logout, selectIsAuth} from "../redux/slices/auth.js";
 export const Header = () => {
     const isAuth = useSelector(selectIsAuth);
     const dispatch = useDispatch();
+    const user = useSelector(state => state.auth)
+
     const onClickLogout = () => {
         if (window.confirm('Are you sure you want to logout?')) {
             dispatch(logout())
@@ -38,7 +40,7 @@ export const Header = () => {
                         <>
                             <div className="header__account-wrapper">
                                 <img src="https://i.pinimg.com/736x/bd/d9/aa/bdd9aaee8c129b1d0a7180512c6f7ae5.jpg" alt="account logo" className="header__account-img" />
-                                <span className="header__account-name">Vlad Akimov</span>
+                                <span className="header__account-name">{user.data.userData.nickName}</span>
                             </div>
                             <button onClick={onClickLogout} type="submit" className='btn btn--logout'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className='icon icon--logout'>
