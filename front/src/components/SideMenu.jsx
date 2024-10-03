@@ -1,20 +1,29 @@
 import { useSelector } from "react-redux";
+import Modal from "react-responsive-modal";
+import React from "react";
+import {AddList} from "./List/AddList";
 
 export const SideMenu = () => {
     const lists = useSelector(state => state.lists)
     const isListsLoading = lists.status === 'loading';
+
+    const [open, setOpen] = React.useState(false);
 
     const check = true;
 
     return (
         <aside className="side-menu">
             <div className="menu__top">
-                <button type="submit" className="btn btn--create-task">
+                <button type="submit" className="btn btn--create-task" onClick={() => setOpen(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" className="icon icon--add-task">
                         <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
                     </svg>
                     <span>Create</span>
                 </button>
+
+                <Modal open={open} onClose={() => setOpen(false)} center>
+                    <AddList />
+                </Modal>
 
                 <ul className="menu__tasks-variant">
                     <li className="active">

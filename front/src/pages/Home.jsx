@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { List } from "../components/List/index.jsx";
+import { List } from "../components/List";
 import { SideMenu } from "../components/SideMenu.jsx";
 import { fetchLists } from "../redux/slices/lists.js";
 import { fetchTasks } from "../redux/slices/tasks.js";
@@ -11,6 +11,7 @@ export const Home = () => {
     const tasks = useSelector(state => state.tasks)
 
     const isListsLoading = lists.status === 'loading';
+    const isListError = lists.status === 'error';
     const isTasksLoading = tasks.state === 'loading';
 
     React.useEffect(() => {
@@ -20,7 +21,7 @@ export const Home = () => {
 
     return (
         <>
-            <SideMenu />
+            {!isListError ? <SideMenu/> : ''}
             <main className="main">
                 {
                     isListsLoading

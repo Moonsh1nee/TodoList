@@ -1,7 +1,22 @@
 .task__wrapper {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+
+    &-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &-remove {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     .menu__checkbox {
         display: flex;
