@@ -9,7 +9,7 @@ export const AddTask = ({_id}) => {
 
     const onSubmit = async (data) => {
         data.list = _id;
-        data.user = user.data.userData._id;
+        data.user = user.data._id;
 
         const req = await dispatch(fetchAddTask(data))
         if (!req.payload) {
