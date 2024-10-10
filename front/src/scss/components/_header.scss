@@ -8,24 +8,18 @@
     background-color: $block;
     border-bottom: 1px solid $splitter;
     .header__wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex(nowrap, row, space-between, center);
         padding: 8px 15px;
 
         .header__left {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flex-center-space-between;
             gap: 10px;
 
             .header__logo {
-                display: flex;
-                align-items: center;
+                @include flex-center;
 
                 .logo__text {
-                    display: flex;
-                    flex-direction: column;
+                    @include flex(nowrap, column);
 
                     font-family: "Protest Guerrilla", system-ui;
                     font-weight: 400;
@@ -47,8 +41,7 @@
             gap: 15px;
 
             &-wrapper {
-                display: flex;
-                align-items: center;
+                @include flex-center;
                 gap: 10px;
             }
 

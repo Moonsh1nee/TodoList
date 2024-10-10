@@ -1,0 +1,19 @@
+@mixin flex($wrap: wrap, $direction: row, $content: start,
+$items: stretch, $gap-row: 0, $gap-column: 0) {
+  display: flex;
+  flex-wrap: $wrap;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $items;
+  gap: $gap-row $gap-column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-space-between {
+  @include flex-center;
+  justify-content: space-between;
+}

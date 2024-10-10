@@ -1,7 +1,14 @@
 .customModal {
-  background: $bg-main !important;
   max-width: 900px !important;
   max-height: 600px !important;
-  height: 100%;
-  width: 100%;
+  background-color: $block !important;
+  border-radius: 20px !important;
+  border: 1px solid $splitter !important;
+  margin: 0 auto !important;
+  padding: 30px !important;
+}
+
+.react-responsive-modal-closeButton {
+  top: 20px !important;
+  right: 20px !important;
 }

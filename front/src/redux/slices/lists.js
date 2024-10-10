@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from '../../axios';
-import {fetchDeleteTask} from "./tasks";
 
 export const fetchLists = createAsyncThunk('lists/fetchLists', async () => {
     const {data} = await axios.get('/lists');

@@ -1,17 +1,13 @@
 .task__wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-center-space-between();
 
     &-left {
-        display: flex;
-        align-items: center;
+        @include flex-center();
         gap: 10px;
     }
 
     &-remove {
-        display: flex;
-        align-items: center;
+        @include flex-center();
 
         &:hover {
             cursor: pointer;
@@ -19,8 +15,7 @@
     }
 
     .menu__checkbox {
-        display: flex;
-        align-items: center;
+        @include flex-center();
 
         input {
             display: none;

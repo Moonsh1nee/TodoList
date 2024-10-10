@@ -21,9 +21,9 @@
        height: 20px;
     }
 
-    &--add-task {
-        width: 40px;
-        height: 40px;
+    &--add-list {
+        width: 30px;
+        height: 30px;
         background-color: $block;
         border-radius: 50%;
     }
@@ -34,7 +34,6 @@
     }
 
     &--checked,
-    &--add-list,
     &--circle,
     &--variant,
     &--task-done {

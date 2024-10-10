@@ -1,31 +1,23 @@
 .side-menu {
     background-color: $block;
     position: fixed;
-    left: 0;
-    top: 56px;
-    width: 200px;
+    width: 250px;
     min-height: 100vh;
     padding: 30px 20px;
     border-right: 1px solid $splitter;
 
-    display: flex;
-    flex-direction: column;
-    row-gap: 30px;
+    @include flex(nowrap, column, $gap-row: 50px);
 
     .menu__top {
-        display: flex;
-        flex-direction: column;
-        row-gap: 40px;
+        @include flex(nowrap, column, $gap-row: 40px);
 
-        .menu__tasks-variant {
-            display: flex;
-            flex-direction: column;
-            row-gap: 15px;
+        .menu__list-variant {
+            @include flex(nowrap, column, $gap-row: 15px);
+
 
             li {
                 font-size: 18px;
-                display: flex;
-                align-items: center;
+                @include flex-center;
                 column-gap: 10px;
                 border-radius: 14px;
                 padding: 5px;
@@ -44,51 +36,59 @@
     }
 
     .menu__bottom {
-        display: flex;
-        flex-direction: column;
-        row-gap: 30px;
+        @include flex(nowrap, column, $gap-row: 30px);
 
         &-title {
             font-size: 18px;
             font-weight: 700;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            @include flex-center-space-between;
         }
 
         ul {
-            display: flex;
-            flex-direction: column;
-            row-gap: 10px;
+            @include flex(nowrap, column, $gap-row: 10px);
 
             li {
-                display: flex;
-                align-items: center;
+                @include flex-center-space-between;
                 column-gap: 10px;
                 border-radius: 14px;
                 padding: 5px;
                 transition: all .3s ease-in-out;
+
+                .list-left, .list-right {
+                    @include flex-center;
+                    gap: 10px;
+                }
+
+                .list__wrapper-remove,
+                .list__wrapper-edit,
+                .menu__checkbox {
+                    @include flex-center;
+                }
                 
                 span {
                     display: flex;
                     max-width: 110px;
                 }
 
-                .menu__checkbox {
-                    display: flex;
-                    align-items: center;
+                .menu__checkbox,
+                .list__wrapper-edit,
+                .list__wrapper-remove {
+                    cursor: pointer;
 
-                    input {
-                        display: none;
+                    &:hover {
+                        scale: 1.3;
                     }
                 }
 
                 &:hover {
-                    cursor: pointer;
                     background-color: $bg-main;
                 }
             }
+        }
+
+        .list--hide {
+            display: none;
         }
     }
 }

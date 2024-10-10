@@ -29,7 +29,7 @@ export const Home = () => {
                         key={index} 
                         isLoadingList={true}
                         />)))
-                    : lists.items.map((obj, index) => (
+                    : lists.items.filter(list => list.activeList).map((obj, index) => (
                         <List 
                             key={index}
                             _id={obj._id}

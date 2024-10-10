@@ -4,6 +4,7 @@ export const createList = async (req, res) => {
     try {
         const doc = new ListModel({
             nameList: req.body.nameList,
+            activeList: req.body.activeList,
             user: req.userId,
         });
 
@@ -76,6 +77,7 @@ export const updateList = async (req, res) => {
             },
             {
                 nameList: req.body.nameList,
+                activeList: req.body.activeList,
                 user: req.userId,
             },
             {

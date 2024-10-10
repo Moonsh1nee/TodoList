@@ -38,7 +38,7 @@ export const Registration = () => {
 
     return (
         <main className="main__form">
-            <div className="form">
+            <div className="form__wrapper">
                 <h2 className="form__title">Create account</h2>
                  <img src="https://i.pinimg.com/736x/bd/d9/aa/bdd9aaee8c129b1d0a7180512c6f7ae5.jpg" alt="account logo" className="form__img" />
                  <form onSubmit={handleSubmit(onSubmit)}>

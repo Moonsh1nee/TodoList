@@ -37,7 +37,7 @@ export const List = ({
                 {
                     isLoadingTask
                         ? [...Array(10)].map((obj, index) => <SkeletonTask key={index}/>)
-                        : tasks.items.map((obj, index) => (obj.list === _id
+                        : tasks.items.filter(task => !task.checkedTask).map((obj, index) => (obj.list === _id
                             ? (<Task
                                 key={obj._id}
                                 _id={obj._id}
@@ -49,6 +49,26 @@ export const List = ({
                         )
                 }
             </ul>
+            <div>
+                <span>Complete tasks:</span>
+
+                <ul>
+                    {
+                        isLoadingTask
+                            ? [...Array(10)].map((obj, index) => <SkeletonTask key={index}/>)
+                            : tasks.items.filter(task => task.checkedTask).map((obj, index) => (obj.list === _id
+                                ? (<Task
+                                    key={obj._id}
+                                    _id={obj._id}
+                                    nameTask={obj.nameTask}
+                                    dateTask={obj.dateTask}
+                                    checkedTask={obj.checkedTask}
+                                />)
+                                : '')
+                            )
+                    }
+                </ul>
+            </div>
         </div>
     )
 }

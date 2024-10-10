@@ -1,6 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {fetchAddList} from "../../redux/slices/lists";
+import React from "react";
+import {modalListCreate} from "../../redux/slices/modals";
 
 export const AddList = () => {
     const dispatch = useDispatch();
@@ -9,6 +11,7 @@ export const AddList = () => {
 
     const onSubmit = async (data) => {
         data.user = user.data._id;
+        dispatch(modalListCreate())
 
         const req = await dispatch(fetchAddList(data))
         if (!req.payload) {
@@ -17,10 +20,23 @@ export const AddList = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='modal__list'>
-            <input defaultValue="list 10" {...register('nameList')} />
+        <div className="form__wrapper-list">
+            <h2 className="form__title-list">Creating a list</h2>
+            <form onSubmit={handleSubmit(onSubmit)} className='form__list'>
+                <label>Title of list:
+                    <input id='nameList' type="text" placeholder="Enter the name of the list" {...register("nameList", {
+                        required: true,
+                        max: 1,
+                        min: 50
+                    })} />
+                </label>
 
-            <input type="submit"/>
-        </form>
+                <label>Active list:
+                    <input id='activeList' type="checkbox" defaultChecked={true} {...register('activeList')} />
+                </label>
+
+                <button type='submit' className='btn'>Send</button>
+            </form>
+        </div>
     );
 }
